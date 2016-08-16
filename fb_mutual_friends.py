@@ -28,14 +28,14 @@ def main():
     friend_links = get_friend_list()
     # Go through each friend's mutual friends, and add them to the list. This can take ages, depending on internet speed
     get_friend_network()
-    #
+    # Make sure there are only mutual friends in the list and remove duplicates
     clean_up(friend_links)
     print "ALL DONE!"
 
 def get_friend_list():
     friend_links = []
     links = []
-    html_page = open("/Users/aditi/Desktop/fb_friends_complete.htm").read()
+    html_page = open("fb_friends_complete.htm").read()
 
     '''
     driver.get("https://www.facebook.com/aditivin/friends?source_ref=pb_friends_tl")
@@ -60,12 +60,12 @@ def get_friend_list():
 
     friend_links = list(set(friend_links))
 
-    fileW = open("/Users/aditi/Desktop/fb_friend_out1.csv", "w")
+    fileW = open("fb_friend_out.csv", "w")
 
     for link in friend_links:
         fileW.write(usr + "," + str(link) + "\n")
 
-    fileW2 = open("/Users/aditi/Desktop/fb_friend_mutual1.csv", "w")
+    fileW2 = open("fb_friend_mutual.csv", "w")
     for link in friend_links:
         link = str(link)
         link = link.replace("?fref=pb&hc_location=friends_tab", "/friends_mutual")
@@ -77,11 +77,11 @@ def get_friend_list():
 
 
 def get_friend_network():
-    mutual_friends = open("/Users/aditi/Desktop/fb_friend_mutual.csv", "r").readlines()
+    mutual_friends = open("fb_friend_mutual.csv", "r").readlines()
     start_from = 0
     count = start_from
 
-    fileW3 = open("/Users/aditi/Desktop/fb_friend_mutual_links.csv", "a")
+    fileW3 = open("fb_friend_mutual_links.csv", "a")
 
     for friend in mutual_friends[start_from:]:
         links = []
@@ -127,7 +127,7 @@ def get_friend_network():
             print "Loading took too much time!"
 
 def clean_up(friend_links):
-    mutual_friends = open("/Users/aditi/Desktop/fb_friend_mutual_links.csv", "r").readlines()
+    mutual_friends = open("fb_friend_mutual_links.csv", "r").readlines()
     mutual_friends_cleaned = []
     friend = []
 
@@ -142,7 +142,7 @@ def clean_up(friend_links):
 
     mutual_friends_cleaned = list(set(mutual_friends_cleaned))
 
-    fileW = open("/Users/aditi/Desktop/fb_friend_mutual_links.csv", "w")
+    fileW = open("fb_friend_mutual_links.csv", "w")
 
     for mf_cleaned in mutual_friends_cleaned:
         fileW.write(mf_cleaned)
