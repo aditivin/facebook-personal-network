@@ -1,7 +1,7 @@
 # facebook-personal-network
 Visualisation of the communities in my Facebook personal network
 
-The latest Facebook API doesn't allow you to download your personal network, so I wrote this python script that crawls the site and first retrieves my friend list, and then from that gets the mutual friends of each person on my friend list. I opened the CSV file in Gephi, and then followed [this](http://allthingsgraphed.com/2014/08/28/facebook-friends-network/) tutorial to create a layout and then detect communities in my network. This is what the result looks like:
+The latest Facebook API doesn't allow you to download your personal network, so I wrote this python script that crawls the site and first retrieves my friend list, and then from that gets the mutual friends of each person on my friend list. I opened the CSV file in Gephi, and followed [this](http://allthingsgraphed.com/2014/08/28/facebook-friends-network/) tutorial to create a layout and detect communities in my network. This is what the result looks like:
 
 My Facebook Personal Network: 
 ![alt text](https://github.com/aditivin/facebook-personal-network/blob/master/fb_network_final.png "My Facebook Personal Network")
